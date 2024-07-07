@@ -1,5 +1,6 @@
 import pickle
 import streamlit as st
+import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Load Save Model
@@ -13,7 +14,12 @@ loader_vec = TfidfVectorizer(decode_error="replace", vocabulary=set(
 
 # Judul Halaman WEB
 
-st.title('Prediksi SMS Penipuan')
+st.title('Prediksi Penipuan SMS')
+
+
+# Menambahkan gambar
+
+st.image('tipu.jpg')
 
 # Deskripsi singkat aplikasi
 
@@ -26,6 +32,17 @@ dan memberikan prediksi apakah pesan tersebut adalah penipuan atau bukan.
 
 Hal ini diharapkan dapat meningkatkan kewaspadaan dan keamanan pengguna terhadap ancaman penipuan melalui SMS.
 """)
+
+# Menambahkan tabel keterangan untuk prediksi SMS penipuan
+
+data = {
+    'Label': [0, 1, 2],
+    'Keterangan': ['SMS Normal', 'SMS Penipuan', 'SMS Promo']
+}
+
+df = pd.DataFrame(data)
+
+st.table(df)
 
 clean_teks = st.text_input('Masukan Teks SMS')
 
