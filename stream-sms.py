@@ -49,7 +49,7 @@ clean_teks = st.text_input('Masukan Teks SMS')
 
 fraud_detection = ''
 
-if st.button('Hasil Detekti'):
+if st.button('Hasil Deteksi'):
     predik_fraud = model_fraud.predict(loader_vec.fit_transform([clean_teks]))
 
     if (predik_fraud == 0):
