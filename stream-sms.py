@@ -3,13 +3,16 @@ import streamlit as st
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# Load Save Model
+# Load the saved model
 model_fraud = pickle.load(open('model_fraud.sav', 'rb'))
 
-tfidf = TfidfVectorizer
+# Load the vocabulary
+vocabulary = pickle.load(open("new_selected_feature_tf-idf.sav", "rb"))
+loader_vec = TfidfVectorizer(
+    decode_error="replace", vocabulary=set(vocabulary))
 
-loader_vec = TfidfVectorizer(decode_error="replace", vocabulary=set(
-    pickle.load(open("new_selected_feature_tf-idf.sav", "rb"))))
+# Fit the vectorizer on dummy data to initialize it
+loader_vec.fit(["dummy data"])
 
 # Judul Halaman WEB
 st.markdown("""
@@ -70,12 +73,18 @@ clean_teks = st.text_input('Masukan Teks SMS')
 fraud_detection = ''
 
 if st.button('Hasil Deteksi'):
-    predik_fraud = model_fraud.predict(loader_vec.fit_transform([clean_teks]))
+    transformed_text = loader_vec.transform([clean_teks])
+    predik_fraud = model_fraud.predict(transformed_text)
+    predik_proba = model_fraud.predict_proba(transformed_text)
 
     if predik_fraud == 0:
-        fraud_detection = 'SMS Normal'
+        fraud_detection = f'SMS Normal dengan akurasi {
+            predik_proba[0][0]*100:.2f}%'
     elif predik_fraud == 1:
-        fraud_detection = 'SMS Penipuan'
+        fraud_detection = f'SMS Penipuan dengan akurasi {
+            predik_proba[0][1]*100:.2f}%'
     else:
-        fraud_detection = 'SMS Promo'
+        fraud_detection = f'SMS Promo dengan akurasi {
+            predik_proba[0][2]*100:.2f}%'
+
 st.success(fraud_detection)
