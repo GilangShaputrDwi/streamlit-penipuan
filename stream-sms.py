@@ -76,6 +76,9 @@ if st.button('Hasil Deteksi'):
     transformed_text = loader_vec.transform([clean_teks])
     predik_fraud = model_fraud.predict(transformed_text)
     predik_proba = model_fraud.predict_proba(transformed_text)
+    
+predik_fraud = model.predict(input_data)  # Menjalankan prediksi model
+predik_proba = model.predict_proba(input_data)  # Menjalankan prediksi probabilitas
 
 if predik_fraud == 0:
     fraud_detection = f'SMS Normal dengan akurasi {predik_proba[0][0]*100:.2f}%'
