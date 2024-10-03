@@ -78,13 +78,11 @@ if st.button('Hasil Deteksi'):
     predik_proba = model_fraud.predict_proba(transformed_text)
 
     if predik_fraud == 0:
-        fraud_detection = f'SMS Normal dengan akurasi {
-            predik_proba[0][0]*100:.2f}%'
-    elif predik_fraud == 1:
-        fraud_detection = f'SMS Penipuan dengan akurasi {
-            predik_proba[0][1]*100:.2f}%'
-    else:
-        fraud_detection = f'SMS Promo dengan akurasi {
-            predik_proba[0][2]*100:.2f}%'
+    fraud_detection = f'SMS Normal dengan akurasi {predik_proba[0][0]*100:.2f}%'
+elif predik_fraud == 1:
+    fraud_detection = f'SMS Penipuan dengan akurasi {predik_proba[0][1]*100:.2f}%'
+else:
+    fraud_detection = f'SMS Promo dengan akurasi {predik_proba[0][2]*100:.2f}%'
+
 
 st.success(fraud_detection)
