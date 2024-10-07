@@ -13,6 +13,25 @@ loader_vec = TfidfVectorizer(decode_error="replace", vocabulary=set(vocabulary))
 # Fit the vectorizer on dummy data to initialize it
 loader_vec.fit(["dummy data"])
 
+# CSS for centering and justifying text
+st.markdown("""
+    <style>
+        .center-content {
+            text-align: center;
+        }
+        .justify-text {
+            text-align: justify;
+        }
+        .center-table {
+            display: flex;
+            justify-content: center;
+        }
+        .center-table table {
+            margin: 0 auto;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # Judul Halaman WEB (Centered)
 st.markdown("""
 <h2 class="center-content">MENDETEKSI PESAN PENIPUAN PADA SMS</h2>
@@ -60,7 +79,6 @@ elif section == 'Tentang Model':
     diinginkan secara otomatis.
     </div>
     """, unsafe_allow_html=True)
-
 
 elif section == 'Cara Penggunaan':
     st.markdown("""
