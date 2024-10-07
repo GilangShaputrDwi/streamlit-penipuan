@@ -16,17 +16,9 @@ loader_vec.fit(["dummy data"])
 # Custom CSS to center content and justify text
 # Custom CSS to center the image
 st.markdown("""
-    <style>
-    .center-image {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    </style>
-""", unsafe_allow_html=True)
+# Menambahkan gambar (Centered)
+st.image('tipu.jpg', use_column_width=True, caption="Contoh Gambar", output_format="JPEG")
 
-# Menambahkan gambar dengan CSS centering
-st.markdown('<img src="tipu.jpg" class="center-image" width="500">', unsafe_allow_html=True)
 
 # Judul Halaman WEB (Centered)
 st.markdown("""
