@@ -102,6 +102,15 @@ elif section == 'Keterangan Input Data':
     st.table(df)
     st.markdown('</div>', unsafe_allow_html=True)
 
+elif section == 'Cara Penggunaan':
+    st.markdown("""
+     Contoh Pesan SMS 
+
+    0. Dilantai 2 ya tepat diruang skripsi
+    1. GT-SHOP Disc.41% BB Z10 3jt BB Torch 2jt BB Davis 1jt Minat? Galaxy S4 3
+    2. 2.5 GB/30 hari hanya Rp 35 Ribu Spesial buat Anda yang terpilih. Aktifkan sekarang juga di *550*905#. Promo sd 30 Nov 2015.Buruan aktifkan sekarang. S&K
+    """)
+
 # Input teks SMS
 clean_teks = st.text_input('Masukan Teks SMS')
 
