@@ -44,12 +44,18 @@ st.image('tipu.jpg')
 # Dropdown untuk Tentang Aplikasi
 section = st.selectbox(
     'Pilih Kategori',
-    ('Klik di sini untuk memilih kategori', 'Tentang Aplikasi', 'Cara Penggunaan',
-     'Tentang Model', 'Contoh Pesan SMS', 'Keterangan Input Data')
+    (
+        'Klik di sini untuk memilih kategori', 
+        '1. Tentang Aplikasi', 
+        '2. Cara Penggunaan',
+        '3. Keterangan Input Data', 
+        '4. Tentang Model', 
+        '5. Contoh Pesan SMS'
+    )
 )
 
 # Konten berdasarkan pilihan dropdown
-if section == 'Tentang Aplikasi':
+if section == '1. Tentang Aplikasi':
     st.markdown("""
     <div class="justify-text">
      Tentang Aplikasi
@@ -66,7 +72,29 @@ if section == 'Tentang Aplikasi':
     </div>
     """, unsafe_allow_html=True)
 
-elif section == 'Tentang Model':
+elif section == '2. Cara Penggunaan':
+    st.markdown("""
+     Cara Penggunaan
+
+    1. Masukkan teks SMS ke dalam kotak input.
+    2. Klik tombol 'Hasil Deteksi' untuk melihat prediksi.
+    3. Prediksi akan muncul di bawah tombol.
+    """)
+
+elif section == '3. Keterangan Input Data':
+    st.markdown("""## Keterangan Input Data""")
+    data = {
+        'Label': [0, 1, 2],
+        'Keterangan': ['SMS Normal', 'SMS Penipuan', 'SMS Promo']
+    }
+    df = pd.DataFrame(data)
+    
+    # Center the table
+    st.markdown('<div class="center-table">', unsafe_allow_html=True)
+    st.table(df)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+elif section == '4. Tentang Model':
     st.markdown("""
     <div class="justify-text">
      Tentang Model
@@ -80,16 +108,7 @@ elif section == 'Tentang Model':
     </div>
     """, unsafe_allow_html=True)
 
-elif section == 'Cara Penggunaan':
-    st.markdown("""
-     Cara Penggunaan
-
-    1. Masukkan teks SMS ke dalam kotak input.
-    2. Klik tombol 'Hasil Deteksi' untuk melihat prediksi.
-    3. Prediksi akan muncul di bawah tombol.
-    """)
-
-elif section == 'Contoh Pesan SMS':
+elif section == '5. Contoh Pesan SMS':
     st.markdown("""
      Contoh Pesan SMS 
 
@@ -97,19 +116,6 @@ elif section == 'Contoh Pesan SMS':
     1. GT-SHOP Disc.41% BB Z10 3jt BB Torch 2jt BB Davis 1jt Minat? Galaxy S4 3
     2. 2.5 GB/30 hari hanya Rp 35 Ribu Spesial buat Anda yang terpilih. Aktifkan sekarang juga di *550*905#. Promo sd 30 Nov 2015.Buruan aktifkan sekarang. S&K
     """)
-
-elif section == 'Keterangan Input Data':
-    st.markdown("""## Keterangan Input Data""")
-    data = {
-        'Label': [0, 1, 2],
-        'Keterangan': ['SMS Normal', 'SMS Penipuan', 'SMS Promo']
-    }
-    df = pd.DataFrame(data)
-    
-    # Center the table
-    st.markdown('<div class="center-table">', unsafe_allow_html=True)
-    st.table(df)
-    st.markdown('</div>', unsafe_allow_html=True)
 
 # Input teks SMS
 clean_teks = st.text_input('Masukan Teks SMS')
