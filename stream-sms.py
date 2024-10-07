@@ -13,15 +13,28 @@ loader_vec = TfidfVectorizer(decode_error="replace", vocabulary=set(vocabulary))
 # Fit the vectorizer on dummy data to initialize it
 loader_vec.fit(["dummy data"])
 
-# Judul Halaman WEB
+# Custom CSS to center title and justify text
 st.markdown("""
-## MENDETEKSI PESAN PENIPUAN PADA SMS 
+    <style>
+    .center-text {
+        text-align: center;
+    }
+    .justify-text {
+        text-align: justify;
+    }
+    .center-table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
-Oleh : Muhammad Gilang Dwi Saputra 21.11.4233
-""")
+# Judul Halaman WEB (Centered)
 st.markdown("""
-## Muhammad Gilang Dwi Saputra 21.11.4233
-""")
+<h2 class="center-text">MENDETEKSI PESAN PENIPUAN PADA SMS</h2>
+<h4 class="center-text">Oleh: Muhammad Gilang Dwi Saputra 21.11.4233</h4>
+""", unsafe_allow_html=True)
+
 # Menambahkan gambar
 st.image('tipu.jpg')
 
@@ -35,6 +48,7 @@ section = st.selectbox(
 # Konten berdasarkan pilihan dropdown
 if section == 'Tentang Aplikasi':
     st.markdown("""
+    <div class="justify-text">
     ## Tentang Aplikasi
 
     Aplikasi web ini bertujuan untuk membantu pengguna mengidentifikasi pesan SMS yang berpotensi merupakan penipuan. 
@@ -42,7 +56,9 @@ if section == 'Tentang Aplikasi':
     dan memberikan prediksi apakah pesan tersebut adalah penipuan atau bukan. 
 
     Hal ini diharapkan dapat meningkatkan kewaspadaan dan keamanan pengguna terhadap ancaman penipuan melalui SMS.
-    """)
+    </div>
+    """, unsafe_allow_html=True)
+    
 elif section == 'Cara Penggunaan':
     st.markdown("""
     ## Cara Penggunaan
@@ -51,22 +67,32 @@ elif section == 'Cara Penggunaan':
     2. Klik tombol 'Hasil Deteksi' untuk melihat prediksi.
     3. Prediksi akan muncul di bawah tombol.
     """)
+    
 elif section == 'Tentang Model':
     st.markdown("""
+    <div class="justify-text">
     ## Tentang Model
 
     Model yang digunakan dalam aplikasi ini adalah model *Naïve Bayes* yang telah dilatih menggunakan dataset yang berisi seputar SMS. 
     Model ini menggunakan teknik *TF-IDF* untuk ekstraksi fitur dari teks SMS dan telah diuji untuk memberikan 
     hasil prediksi yang akurat.
-    """)
+    </div>
+    """, unsafe_allow_html=True)
+    
 elif section == 'Keterangan Input Data':
-    st.markdown("""## Keterangan Input Data""")
+    st.markdown("## Keterangan Input Data")
     data = {
         'Label': [0, 1, 2],
         'Keterangan': ['SMS Normal', 'SMS Penipuan', 'SMS Promo']
     }
     df = pd.DataFrame(data)
+    
+    # Center the table
+    st.markdown("""
+    <div class="center-table">
+    """, unsafe_allow_html=True)
     st.table(df)
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # Input teks SMS
 clean_teks = st.text_input('Masukan Teks SMS')
