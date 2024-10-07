@@ -13,18 +13,14 @@ loader_vec = TfidfVectorizer(decode_error="replace", vocabulary=set(vocabulary))
 # Fit the vectorizer on dummy data to initialize it
 loader_vec.fit(["dummy data"])
 
-# Custom CSS to center content and justify text
-# Custom CSS to center the image
-st.markdown("""
-# Menambahkan gambar (Centered)
-st.image('tipu.jpg', use_column_width=True, caption="Contoh Gambar", output_format="JPEG")
-
-
 # Judul Halaman WEB (Centered)
 st.markdown("""
 <h2 class="center-content">MENDETEKSI PESAN PENIPUAN PADA SMS</h2>
 <h4 class="center-content">Oleh: Muhammad Gilang Dwi Saputra 21.11.4233</h4>
 """, unsafe_allow_html=True)
+
+# Menambahkan gambar
+st.image('tipu.jpg')
 
 # Menambahkan gambar (Centered using custom CSS)
 st.markdown("""
