@@ -13,16 +13,24 @@ loader_vec = TfidfVectorizer(decode_error="replace", vocabulary=set(vocabulary))
 # Fit the vectorizer on dummy data to initialize it
 loader_vec.fit(["dummy data"])
 
-# Custom CSS to center title, justify text, and center the table
+# Custom CSS to center content and justify text
 st.markdown("""
     <style>
-    .center-text {
+    .center-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         text-align: center;
+    }
+    .center-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
     .justify-text {
         text-align: justify;
     }
-    .center-table-container {
+    .center-table {
         display: flex;
         justify-content: center;
     }
@@ -31,12 +39,12 @@ st.markdown("""
 
 # Judul Halaman WEB (Centered)
 st.markdown("""
-<h2 class="center-text">MENDETEKSI PESAN PENIPUAN PADA SMS</h2>
-<h4 class="center-text">Oleh: Muhammad Gilang Dwi Saputra 21.11.4233</h4>
+<h2 class="center-content">MENDETEKSI PESAN PENIPUAN PADA SMS</h2>
+<h4 class="center-content">Oleh: Muhammad Gilang Dwi Saputra 21.11.4233</h4>
 """, unsafe_allow_html=True)
 
-# Menambahkan gambar
-st.image('tipu.jpg')
+# Menambahkan gambar (Centered)
+st.image('tipu.jpg', use_column_width=True, caption="Contoh Gambar", output_format="JPEG", class_="center-image")
 
 # Dropdown untuk Tentang Aplikasi
 section = st.selectbox(
@@ -49,46 +57,54 @@ section = st.selectbox(
 if section == 'Tentang Aplikasi':
     st.markdown("""
     <div class="justify-text">
-    ## Tentang Aplikasi
+     Tentang Aplikasi
 
-    Aplikasi web ini bertujuan untuk membantu pengguna mengidentifikasi pesan SMS yang berpotensi merupakan penipuan. 
-    Dengan menggunakan model *Naïve Bayes* yang telah dilatih, aplikasi ini dapat menganalisis teks dari pesan SMS 
-    dan memberikan prediksi apakah pesan tersebut adalah penipuan atau bukan. 
-
-    Hal ini diharapkan dapat meningkatkan kewaspadaan dan keamanan pengguna terhadap ancaman penipuan melalui SMS.
+    Aplikasi web ini bertujuan untuk membantu pengguna dalam mengidentifikasi pesan SMS yang berpotensi merupakan penipuan.
+    Dengan memanfaatkan model Naïve Bayes yang telah dilatih menggunakan dataset berisi berbagai contoh pesan SMS, aplikasi 
+    ini dapat menganalisis teks dari setiap pesan yang diterima. Proses analisis ini memungkinkan aplikasi untuk menghitung 
+    probabilitas bahwa suatu pesan termasuk dalam kategori penipuan berdasarkan kata-kata dan frasa yang terdapat di dalamnya. 
+    Setelah analisis, aplikasi memberikan prediksi yang jelas kepada pengguna, yaitu apakah pesan tersebut kemungkinan besar 
+    adalah penipuan atau tidak. Dengan demikian, aplikasi ini berfungsi sebagai alat yang efektif untuk melindungi pengguna 
+    dari potensi penipuan yang sering kali dilakukan melalui SMS, sehingga para pengguna dapat membuat keputusan yang lebih baik dan 
+    mengurangi risiko jatuh ke dalam penipuan. Hal ini diharapkan dapat meningkatkan kewaspadaan dan keamanan pengguna terhadap 
+    ancaman penipuan melalui pesan SMS.
     </div>
     """, unsafe_allow_html=True)
-    
+
+elif section == 'Tentang Model':
+    st.markdown("""
+    <div class="justify-text">
+     Tentang Model
+
+    Model yang digunakan dalam aplikasi ini adalah model Naïve Bayes yang telah dilatih menggunakan dataset yang berisi seputar SMS. 
+    Model ini digunakan untuk mengklasifikasikan pesan SMS menjadi kategori Normal, Penipuan, Dan Promo. Dengan asumsi bahwa setiap fitur atau 
+    kata dalam pesan SMS bersifat independen, Naïve Bayes menghitung probabilitas sebuah pesan termasuk ke dalam salah satu kategori. 
+    Model ini bekerja dengan baik untuk data teks seperti SMS karena kemampuannya dalam menangani data berukuran besar dan hasilnya 
+    cukup akurat, meskipun asumsi independensinya sederhana. Hasil klasifikasi ini sangat membantu dalam menyaring pesan yang tidak 
+    diinginkan secara otomatis.
+    </div>
+    """, unsafe_allow_html=True)
+
+
 elif section == 'Cara Penggunaan':
     st.markdown("""
-    ## Cara Penggunaan
+     Cara Penggunaan
 
     1. Masukkan teks SMS ke dalam kotak input.
     2. Klik tombol 'Hasil Deteksi' untuk melihat prediksi.
     3. Prediksi akan muncul di bawah tombol.
     """)
-    
-elif section == 'Tentang Model':
-    st.markdown("""
-    <div class="justify-text">
-    ## Tentang Model
 
-    Model yang digunakan dalam aplikasi ini adalah model *Naïve Bayes* yang telah dilatih menggunakan dataset yang berisi seputar SMS. 
-    Model ini menggunakan teknik *TF-IDF* untuk ekstraksi fitur dari teks SMS dan telah diuji untuk memberikan 
-    hasil prediksi yang akurat.
-    </div>
-    """, unsafe_allow_html=True)
-    
 elif section == 'Keterangan Input Data':
-    st.markdown("## Keterangan Input Data")
+    st.markdown("""## Keterangan Input Data""")
     data = {
         'Label': [0, 1, 2],
         'Keterangan': ['SMS Normal', 'SMS Penipuan', 'SMS Promo']
     }
     df = pd.DataFrame(data)
     
-    # Center the table within a flexbox container
-    st.markdown('<div class="center-table-container">', unsafe_allow_html=True)
+    # Center the table
+    st.markdown('<div class="center-table">', unsafe_allow_html=True)
     st.table(df)
     st.markdown('</div>', unsafe_allow_html=True)
 
