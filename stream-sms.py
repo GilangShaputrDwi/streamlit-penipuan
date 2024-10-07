@@ -15,7 +15,7 @@ loader_vec.fit(["dummy data"])
 
 # Judul Halaman WEB
 st.markdown("""
-## Prediksi Penipuan SMS
+## MENDETEKSI PESAN PENIPUAN PADA SMS 
 
 Oleh : Muhammad Gilang Dwi Saputra 21.11.4233
 """)
