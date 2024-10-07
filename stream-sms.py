@@ -45,7 +45,7 @@ st.image('tipu.jpg')
 section = st.selectbox(
     'Pilih Kategori',
     ('Klik di sini untuk memilih kategori', 'Tentang Aplikasi', 'Cara Penggunaan',
-     'Tentang Model', 'Keterangan Input Data')
+     'Tentang Model', 'Contoh Pesan SMS', 'Keterangan Input Data')
 )
 
 # Konten berdasarkan pilihan dropdown
