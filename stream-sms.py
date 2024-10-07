@@ -49,7 +49,7 @@ section = st.selectbox(
 if section == 'Tentang Aplikasi':
     st.markdown("""
     <div class="justify-text">
-    ## Tentang Aplikasi
+     Tentang Aplikasi
 
     Aplikasi web ini bertujuan untuk membantu pengguna mengidentifikasi pesan SMS yang berpotensi merupakan penipuan. 
     Dengan menggunakan model *Naïve Bayes* yang telah dilatih, aplikasi ini dapat menganalisis teks dari pesan SMS 
@@ -61,7 +61,7 @@ if section == 'Tentang Aplikasi':
     
 elif section == 'Cara Penggunaan':
     st.markdown("""
-    ## Cara Penggunaan
+     Cara Penggunaan
 
     1. Masukkan teks SMS ke dalam kotak input.
     2. Klik tombol 'Hasil Deteksi' untuk melihat prediksi.
@@ -71,7 +71,7 @@ elif section == 'Cara Penggunaan':
 elif section == 'Tentang Model':
     st.markdown("""
     <div class="justify-text">
-    ## Tentang Model
+     Tentang Model
 
     Model yang digunakan dalam aplikasi ini adalah model *Naïve Bayes* yang telah dilatih menggunakan dataset yang berisi seputar SMS. 
     Model ini menggunakan teknik *TF-IDF* untuk ekstraksi fitur dari teks SMS dan telah diuji untuk memberikan 
