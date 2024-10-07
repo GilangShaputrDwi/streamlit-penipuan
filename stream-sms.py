@@ -22,13 +22,6 @@ st.markdown("""
 # Menambahkan gambar
 st.image('tipu.jpg')
 
-# Menambahkan gambar (Centered using custom CSS)
-st.markdown("""
-<div class="center-image">
-    <img src="tipu.jpg" alt="Contoh Gambar" width="300">
-</div>
-""", unsafe_allow_html=True)
-
 # Dropdown untuk Tentang Aplikasi
 section = st.selectbox(
     'Pilih Kategori',
