@@ -13,7 +13,7 @@ loader_vec = TfidfVectorizer(decode_error="replace", vocabulary=set(vocabulary))
 # Fit the vectorizer on dummy data to initialize it
 loader_vec.fit(["dummy data"])
 
-# Custom CSS to center title and justify text
+# Custom CSS to center title, justify text, and center the table
 st.markdown("""
     <style>
     .center-text {
@@ -22,9 +22,9 @@ st.markdown("""
     .justify-text {
         text-align: justify;
     }
-    .center-table {
-        margin-left: auto;
-        margin-right: auto;
+    .center-table-container {
+        display: flex;
+        justify-content: center;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -49,7 +49,7 @@ section = st.selectbox(
 if section == 'Tentang Aplikasi':
     st.markdown("""
     <div class="justify-text">
-     Tentang Aplikasi
+    ## Tentang Aplikasi
 
     Aplikasi web ini bertujuan untuk membantu pengguna mengidentifikasi pesan SMS yang berpotensi merupakan penipuan. 
     Dengan menggunakan model *Naïve Bayes* yang telah dilatih, aplikasi ini dapat menganalisis teks dari pesan SMS 
@@ -61,7 +61,7 @@ if section == 'Tentang Aplikasi':
     
 elif section == 'Cara Penggunaan':
     st.markdown("""
-     Cara Penggunaan
+    ## Cara Penggunaan
 
     1. Masukkan teks SMS ke dalam kotak input.
     2. Klik tombol 'Hasil Deteksi' untuk melihat prediksi.
@@ -71,7 +71,7 @@ elif section == 'Cara Penggunaan':
 elif section == 'Tentang Model':
     st.markdown("""
     <div class="justify-text">
-     Tentang Model
+    ## Tentang Model
 
     Model yang digunakan dalam aplikasi ini adalah model *Naïve Bayes* yang telah dilatih menggunakan dataset yang berisi seputar SMS. 
     Model ini menggunakan teknik *TF-IDF* untuk ekstraksi fitur dari teks SMS dan telah diuji untuk memberikan 
@@ -87,12 +87,10 @@ elif section == 'Keterangan Input Data':
     }
     df = pd.DataFrame(data)
     
-    # Center the table
-    st.markdown("""
-    <div class="center-table">
-    """, unsafe_allow_html=True)
+    # Center the table within a flexbox container
+    st.markdown('<div class="center-table-container">', unsafe_allow_html=True)
     st.table(df)
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # Input teks SMS
 clean_teks = st.text_input('Masukan Teks SMS')
