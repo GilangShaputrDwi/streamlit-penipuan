@@ -14,28 +14,19 @@ loader_vec = TfidfVectorizer(decode_error="replace", vocabulary=set(vocabulary))
 loader_vec.fit(["dummy data"])
 
 # Custom CSS to center content and justify text
+# Custom CSS to center the image
 st.markdown("""
     <style>
-    .center-content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
     .center-image {
         display: block;
         margin-left: auto;
         margin-right: auto;
     }
-    .justify-text {
-        text-align: justify;
-    }
-    .center-table {
-        display: flex;
-        justify-content: center;
-    }
     </style>
 """, unsafe_allow_html=True)
+
+# Menambahkan gambar dengan CSS centering
+st.markdown('<img src="tipu.jpg" class="center-image" width="500">', unsafe_allow_html=True)
 
 # Judul Halaman WEB (Centered)
 st.markdown("""
