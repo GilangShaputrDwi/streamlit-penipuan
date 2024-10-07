@@ -19,7 +19,9 @@ st.markdown("""
 
 Oleh : Muhammad Gilang Dwi Saputra 21.11.4233
 """)
-
+st.markdown("""
+## Muhammad Gilang Dwi Saputra 21.11.4233
+""")
 # Menambahkan gambar
 st.image('tipu.jpg')
 
