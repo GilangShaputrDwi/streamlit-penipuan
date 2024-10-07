@@ -43,8 +43,12 @@ st.markdown("""
 <h4 class="center-content">Oleh: Muhammad Gilang Dwi Saputra 21.11.4233</h4>
 """, unsafe_allow_html=True)
 
-# Menambahkan gambar (Centered)
-st.image('tipu.jpg', use_column_width=True, caption="Contoh Gambar", output_format="JPEG", class_="center-image")
+# Menambahkan gambar (Centered using custom CSS)
+st.markdown("""
+<div class="center-image">
+    <img src="tipu.jpg" alt="Contoh Gambar" width="300">
+</div>
+""", unsafe_allow_html=True)
 
 # Dropdown untuk Tentang Aplikasi
 section = st.selectbox(
