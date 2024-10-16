@@ -117,12 +117,8 @@ elif section == '5. Contoh Pesan SMS':
     2. Akhir bulan harus tetap eksis loh! Internetan pake volume ultima 900MB/30hr. Hrga mulai Rp 35rb di *100*471#. Tarif&lokasi cek di tsel.me/fl,2
     """)
 
-# Inisialisasi session state untuk teks input jika belum ada
-if 'input_text' not in st.session_state:
-    st.session_state['input_text'] = ''
-
 # Input teks SMS
-clean_teks = st.text_input('Masukan Teks SMS', st.session_state['input_text'])
+clean_teks = st.text_input('Masukan Teks SMS')
 
 fraud_detection = ''
 
@@ -140,8 +136,5 @@ if st.button('Hasil Deteksi'):
             fraud_detection = f'SMS Promo dengan akurasi {predik_proba[0][2]*100:.2f}%'
 
         st.success(fraud_detection)
-
-        # Kosongkan input teks setelah menampilkan hasil
-        st.session_state['input_text'] = ''
     else:
         st.warning("Silakan masukkan teks SMS sebelum melakukan prediksi.")
