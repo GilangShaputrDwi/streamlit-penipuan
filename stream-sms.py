@@ -143,5 +143,6 @@ if st.button('Hasil Deteksi'):
 
         # Kosongkan input teks setelah menampilkan hasil
         st.session_state['input_text'] = ''
+        st.experimental_rerun()  # Refresh halaman untuk mengosongkan input
     else:
         st.warning("Silakan masukkan teks SMS sebelum melakukan prediksi.")
