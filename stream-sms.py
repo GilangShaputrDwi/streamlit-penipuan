@@ -113,8 +113,8 @@ elif section == '5. Contoh Pesan SMS':
      Contoh Pesan SMS 
 
     0. Dilantai 2 ya tepat diruang skripsi
-    1. GT-SHOP Disc.41% BB Z10 3jt BB Torch 2jt BB Davis 1jt Minat? Galaxy S4 3
-    2. 2.5 GB/30 hari hanya Rp 35 Ribu Spesial buat Anda yang terpilih. Aktifkan sekarang juga di *550*905#. Promo sd 30 Nov 2015.Buruan aktifkan sekarang. S&K
+    1. INFO RESMI kepada bpk/ibu yang terhormat SELAMAT No ANDA Pemenang ke 2dari pesta isi ulang 3care No PIN:25e477r di undi tadi malam pkl 22:30 di SCTV U/info hadiah anda klik Www.3care16.blogspot.com,1
+    2. Akhir bulan harus tetap eksis loh! Internetan pake volume ultima 900MB/30hr. Hrga mulai Rp 35rb di *100*471#. Tarif&lokasi cek di tsel.me/fl,2
     """)
 
 # Input teks SMS
